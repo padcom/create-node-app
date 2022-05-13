@@ -1,6 +1,6 @@
 {
   "name": "@padcom/create-ts-app",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "NPM project generator for TypeScript application",
   "keywords": ["npm"],
   "author": "Matthias Hryniszak <padcom@gmail.com>",
@@ -9,7 +9,7 @@
     "create-ts-app": "main.js"
   },
   "scripts": {
-    "create-node-app": "echo HERE"
+    "prepublishOnly": "npm install"
   },
   "repository": {
     "type": "git",
