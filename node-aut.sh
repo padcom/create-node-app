@@ -17,7 +17,6 @@ EOM
 rm -f package.json
 mv package.json-1 package.json
 
-
 npm install --save-dev jest @types/jest ts-jest
 npx ts-jest config:init
 npm test
