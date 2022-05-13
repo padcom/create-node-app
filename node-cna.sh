@@ -15,6 +15,7 @@ cat << EOM | node > package.json-1
 const packageJson = require('./package.json')
 packageJson.main = 'main.ts'
 packageJson.scripts['start'] = 'ts-node main.ts'
+packageJson.scripts['build'] = 'tsc main.ts'
 console.log(JSON.stringify(packageJson, null, 2))
 EOM
 rm -f package.json
