@@ -8,7 +8,6 @@ function execute(command) {
     exec(command, function(error, stdout, stderr) {
       if (error) reject(error)
       else resolve(stdout)
-      // else resolve({ stdout, stderr })
     })
   })
 }
@@ -55,15 +54,27 @@ console.log('Hello!')
     expect(1).toBe(1)
   })
 })
+    `)
+    console.log('Creating README.md')
+    withPackageJson(packageJson => {
+      writeFileSync('./README.md', `# ${packageJson.name} project
+
+## Starting the project
+
+To start the project issue the following command:
+\`\`\`
+$ nvm use && npm install && npm start
+\`\`\`
 `)
-  console.log('Adding test scripts to package.json...')
-  withPackageJson(packageJson => {
-    packageJson.scripts['test'] = 'jest'
-    packageJson.scripts['test:watch'] = 'jest --watch'
-  })
-  console.log('Running tests...')
-  await execute('npm test')
-  console.log('All done.')
+    })
+    console.log('Adding test scripts to package.json...')
+    withPackageJson(packageJson => {
+      packageJson.scripts['test'] = 'jest'
+      packageJson.scripts['test:watch'] = 'jest --watch'
+    })
+    console.log('Running tests...')
+    await execute('npm test')
+    console.log('All done.')
   } catch (e) {
     console.error('Error:', e)
     process.exit(1)
