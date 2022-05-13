@@ -1,5 +1,13 @@
 #!/bin/bash -e
 
+git init .
+
+cat << EOF > .gitignore
+node_modules
+dist
+coverage
+EOF
+
 node --version > .nvmrc
 
 npm init -y
