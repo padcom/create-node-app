@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+node --version > .nvmrc
+
 npm init -y
 
 cat << EOM > main.ts
