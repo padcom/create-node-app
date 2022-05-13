@@ -1,22 +1,22 @@
 {
   "name": "@padcom/create-ts-app",
-  "version": "0.0.9",
+  "version": "0.2.1",
   "description": "NPM project generator for TypeScript application",
   "keywords": ["npm"],
   "author": "Matthias Hryniszak <padcom@gmail.com>",
   "license": "Apache-2.0",
-  "bin": {
-    "create-ts-app": "main.js"
-  },
-  "scripts": {
-    "prepublishOnly": "npm install"
+  "homepage": "https://github.com/padcom/create-ts-app#readme",
+  "bugs": {
+    "url": "https://github.com/padcom/create-ts-app/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/padcom/create-ts-app.git"
   },
-  "bugs": {
-    "url": "https://github.com/padcom/create-ts-app/issues"
+  "bin": {
+    "create-ts-app": "generator.js"
   },
-  "homepage": "https://github.com/padcom/create-ts-app#readme"
+  "scripts": {
+    "prepublishOnly": "npm install"
+  }
 }
