@@ -31,3 +31,5 @@ mv package.json-1 package.json
 
 npm install --save-dev typescript @types/node ts-node
 npx tsc --init
+
+git add .
