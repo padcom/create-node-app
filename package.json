@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/padcom/create-node-app.git"
+    "url": "git+https://github.com/padcom/create-ts-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/padcom/create-node-app/issues"
+    "url": "https://github.com/padcom/create-ts-app/issues"
   },
-  "homepage": "https://github.com/padcom/create-node-app#readme"
+  "homepage": "https://github.com/padcom/create-ts-app#readme"
 }
