@@ -54,7 +54,8 @@ async function initNpmProject() {
 
 async function installDependencies() {
   console.log('Installing dependencies...')
-  await execute('npm install --save-dev typescript @types/node ts-node')
+  await execute('npm install --save typescript ts-node')
+  await execute('npm install --save-dev @types/node')
   console.log('Installing test dependencies...')
   await execute('npm install --save-dev jest @types/jest ts-jest')
 }
@@ -85,7 +86,6 @@ async function createScripts() {
     packageJson.version = '0.0.0'
     packageJson.main = 'main.ts'
     packageJson.scripts['start'] = 'ts-node main.ts'
-    packageJson.scripts['build'] = 'tsc main.ts'
     packageJson.scripts['test'] = 'jest'
     packageJson.scripts['test:watch'] = 'jest --watch'
   })
