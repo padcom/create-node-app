@@ -41,11 +41,15 @@ async function freezeNodeVersionUsingNvm() {
   writeFileSync('.nvmrc', await execute('node --version'))
 }
 
-async function createApplicationFiles() {
+async function createApplicationFiles(useLibFolder = true) {
   console.log('Creating main.ts...')
-  mkdirSync('lib')
-  await copyFile('start.ts')
-  await copyFile('main.ts', 'lib/main.ts')
+  if (useLibFolder) {
+    mkdirSync('lib')
+    await copyFile('start-with-lib.ts', 'start.ts')
+    await copyFile('main.ts', `${useLibFolder ? 'lib/' : ''}main.ts`)
+  } else {
+    await copyFile('start-without-lib.ts', 'start.ts')
+  }
   await execute('chmod +x start.ts')
 }
 
@@ -54,12 +58,15 @@ async function initNpmProject() {
   await execute('npm init -y')
 }
 
-async function installDependencies() {
+async function installDependencies(tests = true) {
   console.log('Installing dependencies...')
   await execute('npm install --save typescript ts-node')
   await execute('npm install --save-dev @types/node')
-  console.log('Installing test dependencies...')
-  await execute('npm install --save-dev jest @types/jest ts-jest')
+
+  if (tests) {
+    console.log('Installing test dependencies...')
+    await execute('npm install --save-dev jest @types/jest ts-jest')
+  }
 }
 
 async function initTypeScript() {
@@ -72,9 +79,9 @@ async function initJest() {
   await execute('npx ts-jest config:init')
 }
 
-async function createTestFiles() {
+async function createTestFiles(useLibFolder = true) {
   console.log('Creating example test...')
-  await copyFile('example.test.ts', 'lib/example.test.ts')
+  await copyFile('example.test.ts', `${useLibFolder ? 'lib/' : ''}example.test.ts`)
 }
 
 async function runTests() {
@@ -82,14 +89,16 @@ async function runTests() {
   await execute('npm test')
 }
 
-async function createScripts() {
+async function createScripts(tests = true) {
   console.log('Adding start and build scripts')
   await withPackageJson(packageJson => {
     packageJson.version = '0.0.0'
     packageJson.main = 'start.ts'
     packageJson.scripts['start'] = 'ts-node start.ts'
-    packageJson.scripts['test'] = 'jest'
-    packageJson.scripts['test:watch'] = 'jest --watch'
+    if (tests) {
+      packageJson.scripts['test'] = 'jest'
+      packageJson.scripts['test:watch'] = 'jest --watch'
+    }
   })
 }
 
@@ -100,18 +109,28 @@ async function createReadme() {
   })
 }
 
-async function main() {
+async function main(options = {
+  tests: true,
+  exampleTests: true,
+  freezeNodeVersion: true,
+  useLibFolder: true,
+}) {
   try {
     await initGitRepository()
-    await freezeNodeVersionUsingNvm()
-    await createApplicationFiles()
+    if (options.freezeNodeVersion)
+      await freezeNodeVersionUsingNvm()
+    await createApplicationFiles(options.useLibFolder)
     await initNpmProject()
-    await installDependencies()
+    await createScripts(options.tests)
+    await installDependencies(options.tests)
     await initTypeScript()
-    await initJest()
-    await createScripts()
-    await createTestFiles()
-    await runTests()
+    if (options.tests) {
+      await initJest()
+      if (options.exampleTests) {
+        await createTestFiles(options.useLibFolder)
+        await runTests()
+      }
+    }
     await createReadme()
     console.log('All done.')
   } catch (e) {
@@ -120,4 +139,4 @@ async function main() {
   }
 }
 
-main()
+module.exports = main
