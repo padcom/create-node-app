@@ -16,6 +16,7 @@ export class InitTestsCommand extends Action {
     println('ok')
 
     print('Initializint test subsystem (Jest)...')
+    await execute('npx ts-jest config:init')
     await withPackageJson(packageJson => {
       packageJson.scripts['test'] = 'jest --coverage'
       packageJson.scripts['test:watch'] = 'jest --watch --coverage'

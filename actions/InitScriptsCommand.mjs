@@ -14,5 +14,7 @@ export class InitScriptsCommand extends Action {
       packageJson.scripts['start'] = 'ts-node start.ts'
     })
     println('ok')
+
+    return { scriptsInitialized: true }
   }
 }
