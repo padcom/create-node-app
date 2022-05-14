@@ -94,8 +94,8 @@ async function createScripts(tests = true) {
     packageJson.main = 'start.ts'
     packageJson.scripts['start'] = 'ts-node start.ts'
     if (tests) {
-      packageJson.scripts['test'] = 'jest'
-      packageJson.scripts['test:watch'] = 'jest --watch'
+      packageJson.scripts['test'] = 'jest --coverage'
+      packageJson.scripts['test:watch'] = 'jest --watch --coverage'
     }
   })
 }
