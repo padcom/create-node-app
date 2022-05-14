@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { exec } = require('child_process')
-const { readFileSync, writeFileSync } = require('fs')
+const { mkdirSync, readFileSync, writeFileSync } = require('fs')
 
 function execute(command) {
   return new Promise((resolve, reject) => {
@@ -43,8 +43,10 @@ async function freezeNodeVersionUsingNvm() {
 
 async function createApplicationFiles() {
   console.log('Creating main.ts...')
-  await copyFile('main.ts')
-  await execute('chmod +x main.ts')
+  mkdirSync('lib')
+  await copyFile('start.ts')
+  await copyFile('main.ts', 'lib/main.ts')
+  await execute('chmod +x start.ts')
 }
 
 async function initNpmProject() {
@@ -72,7 +74,7 @@ async function initJest() {
 
 async function createTestFiles() {
   console.log('Creating example test...')
-  await copyFile('example.test.ts')
+  await copyFile('example.test.ts', 'lib/example.test.ts')
 }
 
 async function runTests() {
@@ -84,8 +86,8 @@ async function createScripts() {
   console.log('Adding start and build scripts')
   await withPackageJson(packageJson => {
     packageJson.version = '0.0.0'
-    packageJson.main = 'main.ts'
-    packageJson.scripts['start'] = 'ts-node main.ts'
+    packageJson.main = 'start.ts'
+    packageJson.scripts['start'] = 'ts-node start.ts'
     packageJson.scripts['test'] = 'jest'
     packageJson.scripts['test:watch'] = 'jest --watch'
   })
