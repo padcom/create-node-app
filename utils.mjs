@@ -33,11 +33,15 @@ export async function copyTemplateFile(filename, context = {}, destination = fil
 }
 
 export function print(msg) {
-  process.stdout.write(chalk.dim.gray(msg))
+  process.stdout.write(chalk.gray(msg))
 }
 
 export function println(msg) {
-  process.stdout.write(chalk.gray(msg + '\n'))
+  process.stdout.write(chalk.bold.green(msg + '\n'))
+}
+
+export function error(msg) {
+  process.stdout.write(chalk.bold.red('ERROR') + '\n\n' + chalk.bold(msg) + '\n')
 }
 
 export const dirname = fileURLToPath(new URL('.', import.meta.url))

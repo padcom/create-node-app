@@ -15,6 +15,8 @@ import { RunTestsCommand } from './actions/RunTestsCommand.mjs'
 import { CreateReadmeCommand } from './actions/CreateReadmeCommand.mjs'
 import { SummaryCommand } from './actions/SummaryCommand.mjs'
 
+import { error } from './utils.mjs'
+
 const actions = [
   new Question('freezeNodeJsWithNvm', 'Freeze node.js version in .nvmrc?'),
   new FreezeNodeJsVersionWithNvmCommand(),
@@ -38,11 +40,15 @@ const actions = [
 
 async function main() {
   let options = {}
-  for (const action of actions)
-    if (await action.enabled(options)) {
-      const result = await action.execute(options)
-      options = { ...options, ...result }
-    }
+  try {
+    for (const action of actions)
+      if (await action.enabled(options)) {
+        const result = await action.execute(options)
+        options = { ...options, ...result }
+      }
+  } catch (e) {
+    error(e)
+  }
 }
 
 main()
