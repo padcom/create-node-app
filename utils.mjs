@@ -3,7 +3,7 @@ import { exec } from 'child_process'
 import { writeFileSync, readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 
-export { mkdirSync as mkdir, writeFileSync as writeFile } from 'fs'
+export { mkdirSync as mkdir, writeFileSync as writeFile, readFileSync as readFile } from 'fs'
 
 export function execute(command) {
   return new Promise((resolve, reject) => {

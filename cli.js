@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { WelcomeMessageCommand } from './actions/WelcomeMessageCommand.mjs'
 import { Question } from './actions/Question.mjs'
 import { FreezeNodeJsVersionWithNvmCommand } from './actions/FreezeNodeJsVersionWithNvmCommand.mjs'
 import { InitGitRepositoryCommand } from './actions/InitGitRepositoryCommand.mjs'
@@ -18,6 +19,7 @@ import { SummaryCommand } from './actions/SummaryCommand.mjs'
 import { error } from './utils.mjs'
 
 const actions = [
+  new WelcomeMessageCommand(),
   new Question('freezeNodeJsWithNvm', 'Freeze node.js version in .nvmrc?'),
   new FreezeNodeJsVersionWithNvmCommand(),
   new Question('initGitRepo', 'Initialize Git repository?'),
