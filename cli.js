@@ -8,6 +8,7 @@ import { InitScriptsCommand } from './actions/InitScriptsCommand.mjs'
 import { InstallProjectDependenciesCommand } from './actions/InstallProjectDependenciesCommand.mjs'
 import { InitTypeScriptCommand } from './actions/InitTypeScriptCommand.mjs'
 import { CreateApplicationFilesCommand } from './actions/CreateApplicationFilesCommand.mjs'
+import { InitEslintCommand } from './actions/InitEslintCommand.mjs'
 import { InitTestsCommand } from './actions/InitTestsCommand.mjs'
 import { ShouldCreateExampleTestsQuestion } from './actions/ShouldCreateExampleTestsQuestion.mjs'
 import { CreateExampleTestFilesCommand } from './actions/CreateExampleTestFilesCommand.mjs'
@@ -28,6 +29,8 @@ const actions = [
   new InstallProjectDependenciesCommand(),
   new InitTypeScriptCommand(),
   new CreateApplicationFilesCommand(),
+  new Question('initEslint', 'Would you like to install linting support using eslint?'),
+  new InitEslintCommand(),
   new Question('initTests', 'Would you like to install testing support using Jest?'),
   new InitTestsCommand(),
   new ShouldCreateExampleTestsQuestion('createExampleTest', 'Would you like me to create an example test for you?'),
