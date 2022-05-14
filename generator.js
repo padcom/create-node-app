@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const { exec } = require('child_process')
 const { mkdirSync, readFileSync, writeFileSync } = require('fs')
 
@@ -134,7 +132,7 @@ async function main(options = {
     }
     if (options.readme)
       await createReadme()
-    console.log('All done.')
+    console.log('All done. Enjoy!')
   } catch (e) {
     console.error('Error:', e)
     process.exit(1)

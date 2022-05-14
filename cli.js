@@ -4,13 +4,7 @@ const inquirer = require('inquirer')
 const generator = require('./generator')
 
 async function main() {
-  const answers = await inquirer.prompt([
-    // {
-    //   type: 'confirm',
-    //   message: '',
-    //   name: '',
-    //   default: true,
-    // },
+  const options = await inquirer.prompt([
     {
       type: 'confirm',
       message: 'Freeze node.js version in .nvmrc?',
@@ -44,7 +38,7 @@ async function main() {
     },
   ])
 
-  await generator(answers)
+  await generator(options)
 }
 
 main()
