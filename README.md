@@ -1,4 +1,4 @@
-# Create node.js app generator
+# Node.js app generator
 
 This generator creates a project that has typescript and jest configured
 
@@ -14,7 +14,7 @@ $ npm init @padcom/ts-app
 
 Which will create the following elements:
 
-### `main.ts`
+### `start.ts`
 This is the main application entry point. It can be invoked either directly or by calling `npm start`
 
 ### `example.test.ts`
@@ -41,12 +41,8 @@ The following list describes the default NPM scripts that can be used with the p
 Starts the application by running
 
 ```
-$ npx ts-node main.ts
+$ npx ts-node start.ts
 ```
-
-### `build`
-
-Runs `tsc` starting with `main.ts`
 
 ### `test`
 
