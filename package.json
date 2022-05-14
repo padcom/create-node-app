@@ -1,6 +1,6 @@
 {
   "name": "@padcom/create-ts-app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "NPM project generator for TypeScript application",
   "keywords": [
     "npm"

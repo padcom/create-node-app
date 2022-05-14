@@ -18,27 +18,28 @@ import { CreateReadmeCommand } from './actions/CreateReadmeCommand.mjs'
 import { SummaryCommand } from './actions/SummaryCommand.mjs'
 
 import { error } from './utils.mjs'
+import chalk from 'chalk'
 
 const actions = [
   new WelcomeMessageCommand(),
-  new Question('initGitRepo', 'Would you like to initialize Git repository in current folder?'),
+  new Question('initGitRepo', `Would you like to initialize ${chalk.yellow('git')} repository in current folder?`),
   new InitGitRepositoryCommand(),
-  new Question('useLibFolder', 'Would you like to use "lib" folder for sources?'),
+  new Question('useLibFolder', `Would you like to use ${chalk.yellow('lib')} folder for sources?`),
   new InitNpmProjectCommand(),
   new InitScriptsCommand(),
   new InstallProjectDependenciesCommand(),
   new InitTypeScriptCommand(),
   new CreateApplicationFilesCommand(),
-  new Question('initEslint', 'Would you like to install linting support using eslint?'),
+  new Question('initEslint', `Would you like to install linting support using ${chalk.yellow('eslint')}?`),
   new InitEslintCommand(),
-  new Question('initTests', 'Would you like to install testing support using Jest?'),
+  new Question('initTests', `Would you like to install testing support using ${chalk.yellow('jest')}?`),
   new InitTestsCommand(),
   new ShouldCreateExampleTestsQuestion('createExampleTest', 'Would you like me to create an example test for you?'),
   new CreateExampleTestFilesCommand(),
   new RunTestsCommand(),
-  new Question('freezeNodeJsWithNvm', 'Would you like to store current node.js version in .nvmrc?'),
+  new Question('freezeNodeJsWithNvm', `Would you like to store current node.js version in ${chalk.yellow('.nvmrc')}?`),
   new FreezeNodeJsVersionWithNvmCommand(),
-  new Question('createReadme', 'How about a README.md?'),
+  new Question('createReadme', `How about a ${chalk.yellow('README.md')}?`),
   new CreateReadmeCommand(),
   new SummaryCommand(),
 ]
