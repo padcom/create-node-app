@@ -16,22 +16,22 @@ import { CreateReadmeCommand } from './actions/CreateReadmeCommand.mjs'
 import { SummaryCommand } from './actions/SummaryCommand.mjs'
 
 const actions = [
-  new Question('freezeNodeJsWithNvm', 'Freeze node.js version in .nvmrc?', true),
+  new Question('freezeNodeJsWithNvm', 'Freeze node.js version in .nvmrc?'),
   new FreezeNodeJsVersionWithNvmCommand(),
-  new Question('initGitRepo', 'Initialize Git repository?', true),
+  new Question('initGitRepo', 'Initialize Git repository?'),
   new InitGitRepositoryCommand(),
-  new Question('useLibFolder', 'Use "lib" folder for sources?', true),
+  new Question('useLibFolder', 'Use "lib" folder for sources?'),
   new InitNpmProjectCommand(),
   new InitScriptsCommand(),
   new InstallProjectDependenciesCommand(),
   new InitTypeScriptCommand(),
   new CreateApplicationFilesCommand(),
-  new Question('initTests', 'Install Jest support?', true),
+  new Question('initTests', 'Install Jest support?'),
   new InitTestsCommand(),
-  new ShouldCreateExampleTestsQuestion('createExampleTest', 'Create example test?', true),
+  new ShouldCreateExampleTestsQuestion('createExampleTest', 'Create example test?'),
   new CreateExampleTestFilesCommand(),
   new RunTestsCommand(),
-  new Question('createReadme', 'Create README.md?', true),
+  new Question('createReadme', 'Create README.md?'),
   new CreateReadmeCommand(),
   new SummaryCommand(),
 ]

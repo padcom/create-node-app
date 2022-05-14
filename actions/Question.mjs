@@ -6,7 +6,7 @@ export class Question extends Action {
   #question = null
   #defaultValue = null
 
-  constructor(optionName, question, defaultValue) {
+  constructor(optionName, question, defaultValue = true) {
     super('question')
     this.#optionName = optionName
     this.#question = question
