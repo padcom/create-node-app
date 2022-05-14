@@ -114,6 +114,7 @@ async function main(options = {
   exampleTests: true,
   freezeNodeVersion: true,
   useLibFolder: true,
+  readme: true,
 }) {
   try {
     await initGitRepository()
@@ -131,7 +132,8 @@ async function main(options = {
         await runTests()
       }
     }
-    await createReadme()
+    if (options.readme)
+      await createReadme()
     console.log('All done.')
   } catch (e) {
     console.error('Error:', e)

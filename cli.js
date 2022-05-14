@@ -36,6 +36,12 @@ async function main() {
       default: false,
       when: answers => answers.tests,
     },
+    {
+      type: 'confirm',
+      message: 'Create readme file?',
+      name: 'readme',
+      default: true,
+    },
   ])
 
   await generator(answers)
