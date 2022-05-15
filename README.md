@@ -41,8 +41,21 @@ The following list describes the default NPM scripts that can be used with the p
 Starts the application by running
 
 ```
+$ npm start
+```
+
+or
+
+```
+$ ./start.ts
+```
+
+or
+
+```
 $ npx ts-node start.ts
 ```
+
 
 ### `test`
 
@@ -51,6 +64,22 @@ Executes all tests in the project
 ### `test:watch`
 
 Executes tests that have been changed since the last commit.
+
+### `lint`
+
+You can run linter on your project with the following command:
+
+```
+$ npm run lint
+```
+
+### `lint:fix`
+
+You can fix all auto-fixable linter problems by issuing the following command:
+
+```
+$ npm run lint:fix
+```
 
 ## TypeScript
 
