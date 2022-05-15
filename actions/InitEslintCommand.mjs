@@ -11,8 +11,11 @@ export class InitEslintCommand extends Action {
   }
 
   async execute(options) {
-    print('Initializing eslint...')
+    print('Installing eslint dependencies...')
     await execute('npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin')
+    println('ok')
+
+    print('Initializing eslint...')
     await copyFile('.eslintrc.js')
     await withPackageJson(packageJson => {
       packageJson.scripts['lint'] = 'eslint **/*.ts'
