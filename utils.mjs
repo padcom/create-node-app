@@ -33,7 +33,7 @@ export async function copyTemplateFile(filename, context = {}, destination = fil
 }
 
 export function print(msg) {
-  process.stdout.write(chalk.gray(msg))
+  process.stdout.write(chalk.magenta('> ') + chalk.gray(msg))
 }
 
 export function println(msg) {
