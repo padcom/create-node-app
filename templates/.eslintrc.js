@@ -18,6 +18,7 @@ module.exports = {
     '**/*.js'
   ],
   'rules': {
+    '@typescript-eslint/ban-ts-comment': [ 'off' ],
     '@typescript-eslint/space-before-blocks': [ 'error' ],
     '@typescript-eslint/type-annotation-spacing': [ 'error' ],
     'array-element-newline': [ 'error', 'consistent' ],
