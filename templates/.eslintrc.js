@@ -19,6 +19,7 @@ module.exports = {
   ],
   'rules': {
     '@typescript-eslint/ban-ts-comment': [ 'off' ],
+    '@typescript-eslint/no-explicit-any': [ 'off' ],
     '@typescript-eslint/space-before-blocks': [ 'error' ],
     '@typescript-eslint/type-annotation-spacing': [ 'error' ],
     'array-element-newline': [ 'error', 'consistent' ],
