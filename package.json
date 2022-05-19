@@ -1,6 +1,6 @@
 {
   "name": "@padcom/create-ts-app",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "NPM project generator for TypeScript application",
   "keywords": [
     "npm"
@@ -27,7 +27,7 @@
     "inquirer": "^8.2.4"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "os": [
     "!win32"
