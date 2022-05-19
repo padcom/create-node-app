@@ -49,3 +49,7 @@ export function error(msg) {
 }
 
 export const dirname = fileURLToPath(new URL('.', import.meta.url))
+
+export function flushStdin() {
+  for (let i = 0; i < 3; i++) while (process.stdin.read() !== null);
+}

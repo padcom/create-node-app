@@ -17,8 +17,9 @@ import { FreezeNodeJsVersionWithNvmCommand } from './actions/FreezeNodeJsVersion
 import { CreateReadmeCommand } from './actions/CreateReadmeCommand.mjs'
 import { SummaryCommand } from './actions/SummaryCommand.mjs'
 
-import { error } from './utils.mjs'
+import { error, flushStdin } from './utils.mjs'
 import chalk from 'chalk'
+import flushPromises from 'flush-promises'
 
 const actions = [
   new WelcomeMessageCommand(),
@@ -49,6 +50,7 @@ async function main() {
   try {
     for (const action of actions)
       if (await action.enabled(options)) {
+        await flushStdin()
         const result = await action.execute(options)
         options = { ...options, ...result }
       }
