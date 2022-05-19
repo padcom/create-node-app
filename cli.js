@@ -19,7 +19,6 @@ import { SummaryCommand } from './actions/SummaryCommand.mjs'
 
 import { error, flushStdin } from './utils.mjs'
 import chalk from 'chalk'
-import flushPromises from 'flush-promises'
 
 const actions = [
   new WelcomeMessageCommand(),
