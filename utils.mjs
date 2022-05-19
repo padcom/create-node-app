@@ -14,6 +14,10 @@ export function execute(command) {
   })
 }
 
+export async function setNpmRc(option, value) {
+  return execute(`npm config set "${option}"="${value}" --userconfig .npmrc`)
+}
+
 export async function withPackageJson(callback) {
   const packageJson = JSON.parse(readFileSync('./package.json'))
   await callback(packageJson)
