@@ -16,6 +16,7 @@ import { RunTestsCommand } from './actions/RunTestsCommand.mjs'
 import { FreezeNodeJsVersionWithNvmCommand } from './actions/FreezeNodeJsVersionWithNvmCommand.mjs'
 import { CreateReadmeCommand } from './actions/CreateReadmeCommand.mjs'
 import { SummaryCommand } from './actions/SummaryCommand.mjs'
+import { OpenVSCodeCommand } from './actions/OpenVSCodeCommand.mjs'
 
 import { error, flushStdin } from './utils.mjs'
 import chalk from 'chalk'
@@ -42,6 +43,8 @@ const actions = [
   new Question('createReadme', `How about a ${chalk.yellow('README.md')}?`),
   new CreateReadmeCommand(),
   new SummaryCommand(),
+  new Question('openVSCode', `Would you like to open ${chalk.yellow('vscode')} in this folder now?`),
+  new OpenVSCodeCommand(),
 ]
 
 async function main() {
