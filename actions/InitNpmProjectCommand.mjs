@@ -9,7 +9,7 @@ export class InitNpmProjectCommand extends Action {
   async execute(options) {
     print('Initializing project...')
     await execute('npm init -y')
-    await copyFile('.npmrc')
+    await copyFile('npmrc', '.npmrc')
     const nodeVersion = await execute('node --version')
     const npmVersion = await execute('npm --version')
     withPackageJson(packageJson => {

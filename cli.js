@@ -8,6 +8,7 @@ import { InitScriptsCommand } from './actions/InitScriptsCommand.mjs'
 import { InstallProjectDependenciesCommand } from './actions/InstallProjectDependenciesCommand.mjs'
 import { InitTypeScriptCommand } from './actions/InitTypeScriptCommand.mjs'
 import { CreateApplicationFilesCommand } from './actions/CreateApplicationFilesCommand.mjs'
+import { CreateVSCodeFilesCommand } from './actions/CreateVSCodeFilesCommand.mjs'
 import { InitEslintCommand } from './actions/InitEslintCommand.mjs'
 import { InitTestsCommand } from './actions/InitTestsCommand.mjs'
 import { ShouldCreateExampleTestsQuestion } from './actions/ShouldCreateExampleTestsQuestion.mjs'
@@ -31,6 +32,7 @@ const actions = [
   new InstallProjectDependenciesCommand(),
   new InitTypeScriptCommand(),
   new CreateApplicationFilesCommand(),
+  new CreateVSCodeFilesCommand(),
   new Question('initEslint', `Would you like to install linting support using ${chalk.yellow('eslint')}?`),
   new InitEslintCommand(),
   new Question('initTests', `Would you like to install testing support using ${chalk.yellow('jest')}?`),

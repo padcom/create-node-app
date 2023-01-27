@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "ghmcadams.lintlens",
+    "orta.vscode-jest",
+    "eamodio.gitlens"
+  ],
+  "unwantedRecommendations": [
+    "rvest.vs-code-prettier-eslint"
+  ]
+}
